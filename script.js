@@ -1,5 +1,4 @@
 
-let playerOption = askPlayer("first");
 let playerScore = 0;
 let computerScore = 0;
 
@@ -17,7 +16,7 @@ function askPlayer(whenCalled){
     if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors"){
         return playerChoice;
     }else{
-        askPlayer("second");
+        return askPlayer("second");
     }
 
 }
@@ -25,7 +24,7 @@ function askPlayer(whenCalled){
 //Computer randomly chooses rock, paper, or scissors.
 function computerPlay(){
     const choices = ['rock', 'paper', 'scissors'];
-    const randNum = Math.floor(Math.random() * 3));
+    const randNum = Math.floor(Math.random() * 3);
     return choices[randNum];
 }
 
@@ -34,9 +33,9 @@ function playRound(playerSelection, computerSelection){
     if(playerSelection === computerSelection){
         return "draw";
     }
-    else if ((playerSelection === "rock" && computerSelectioon === "scissors") ||
-              (playerSelection === "scissors" && computerSelectioon === "paper") ||
-              (playerSelection === "paper" && computerSelectioon === "rock")){
+    else if ((playerSelection === "rock" && computerSelection === "scissors") ||
+              (playerSelection === "scissors" && computerSelection === "paper") ||
+              (playerSelection === "paper" && computerSelection === "rock")){
         playerScore++;
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
@@ -49,15 +48,17 @@ function playRound(playerSelection, computerSelection){
 //Plays 5 rounds,keeps score, and determines winner at the end.
 function game(){
     for(i = 0; i < 5; i++){
-        console.log(playRound(playerOption,computerPlay()));
+        console.log(playRound(askPlayer("first"),computerPlay()));
     }
 
     if(playerScore === computerScore){
         console.log("It's a draw.");
     }
     else if (playerScore > computerScore){
-        console.log(`You win! Your score is ${playerScore} out of 5.`);
+        console.log(`Your score is ${playerScore} out of 5. You win!`);
     }else{
-        console.log(`You lose! Your score is ${playerScore} out of 5.`);
+        console.log(`Your score is ${playerScore} out of 5. You lose!`);
     }
 }
+
+game();
