@@ -47,6 +47,7 @@ function playRound(){
     if(playerSelection === computerSelection){
         //return "draw";
         results.textContent = "It's a draw";
+        score.textContent = `Player: ${playerScore}  Computer: ${computerScore}`;
     }
     else if ((playerSelection === "rock" && computerSelection === "scissors") ||
               (playerSelection === "scissors" && computerSelection === "paper") ||
